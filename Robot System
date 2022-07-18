@@ -1,1 +1,460 @@
+MODULE MainModule
+	VAR robtarget pick:=[[32.79,513.71,350],[0.0060139,0.704293,-0.709816,0.00986123],[1,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget pickrealdatas:=[[-99.71,583.04,354.01],[0.0060139,0.704293,-0.709816,0.00986123],[1,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]]; ! z denenen
+    CONST robtarget pickreference:=[[32.79,513.71,350],[0.0060139,0.704293,-0.709816,0.00986123],[1,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    
+	CONST jointtarget jHome:=[[100.894,-23.7528,35.7932,0.642628,76.9628,11.4979],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+	VAR robtarget prepick:=[[-103.44,541.97,530.87],[0.000300963,-0.702467,0.711641,0.010311],[1,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    
+	CONST robtarget prereleaseregion1_direction1:=[[330.21,269.37,355.83],[0.00378097,-0.012652,0.999861,0.0101742],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget prereleaseregion1_direction2:=[[330.21,269.37,355.83],[0.0102544,-0.99991,0.00789788,-0.00355857],[0,0,2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    
+    CONST robtarget prereleaseregion2_direction1:=[[492.94,272.64,355.83],[0.00378097,-0.012652,0.999861,0.0101742],[0,0,2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget prereleaseregion2_direction2:=[[492.94,272.64,355.83],[0.0102544,-0.99991,0.00789788,-0.00355857],[0,0,2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    
+    CONST robtarget preprerelease:=[[109.45,53.72,566.07],[0.00379174,-0.0126424,0.999861,0.0101877],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    
+	CONST robtarget release1_1:=[[338.26,282.23,16.04],[0.00129875,0.00626926,-0.99994,-0.00894713],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+	CONST robtarget release1_2:=[[492.94,272.64,16.04],[0.00129875,0.00626926,-0.99994,-0.00894713],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    
+    CONST robtarget release2_1:=[[338.34,282.26,26.04],[0.0102544,-0.99991,0.00789788,-0.00355857],[0,0,2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget release2_2:=[[492.94,272.64,26.04],[0.0102544,-0.99991,0.00789788,-0.00355857],[0,0,2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    
+    CONST robtarget release3_1:=[[338.34,282.26,36.04],[0.00129875,0.00626926,-0.99994,-0.00894713],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget release3_2:=[[492.94,272.64,36.04],[0.00129875,0.00626926,-0.99994,-0.00894713],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    
+    CONST robtarget release4_1:=[[338.34,282.26,46.04],[0.0102544,-0.99991,0.00789788,-0.00355857],[0,0,2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget release4_2:=[[492.94,272.64,46.04],[0.0102544,-0.99991,0.00789788,-0.00355857],[0,0,2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+	
+	CONST robtarget release5_1:=[[338.26,282.23,56.04],[0.00129875,0.00626926,-0.99994,-0.00894713],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+	CONST robtarget release5_2:=[[492.94,272.64,56.04],[0.00129875,0.00626926,-0.99994,-0.00894713],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    
+    CONST robtarget release6_1:=[[338.34,282.26,66.04],[0.0102544,-0.99991,0.00789788,-0.00355857],[0,0,2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget release6_2:=[[492.94,272.64,66.04],[0.0102544,-0.99991,0.00789788,-0.00355857],[0,0,2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    
+    CONST robtarget release7_1:=[[338.34,282.26,76.04],[0.00129875,0.00626926,-0.99994,-0.00894713],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget release7_2:=[[492.94,272.64,76.04],[0.00129875,0.00626926,-0.99994,-0.00894713],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    
+    CONST robtarget release8_1:=[[338.34,282.26,86.04],[0.0102544,-0.99991,0.00789788,-0.00355857],[0,0,2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget release8_2:=[[492.94,272.64,86.04],[0.0102544,-0.99991,0.00789788,-0.00355857],[0,0,2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+	
+	CONST robtarget release9_1:=[[338.26,282.23,96.04],[0.00129875,0.00626926,-0.99994,-0.00894713],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+	CONST robtarget release9_2:=[[492.94,272.64,96.04],[0.00129875,0.00626926,-0.99994,-0.00894713],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    
+    CONST robtarget release10_1:=[[338.34,282.26,106.04],[0.0102544,-0.99991,0.00789788,-0.00355857],[0,0,2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget release10_2:=[[492.94,272.64,106.04],[0.0102544,-0.99991,0.00789788,-0.00355857],[0,0,2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
 
+    
+    
+    VAR num xval:= 0;
+    VAR num yval:= 0;
+    VAR num angleval:= 0;
+    
+    VAR num orginal_x :=0;
+    VAR num orginal_y := 0;
+    VAR num orginal_Zangle := 0;
+    VAR num orginal_Yangle := 0;
+    VAR num orginal_Xangle := 0;
+    VAR num X_SET := 0;
+    VAR num Y_SET := 0;
+    VAR num ANGLE_SET := 0;
+    
+	PROC main()
+        
+        MoveAbsJ jHome\NoEOffs, v300, z50, magnetictool;
+        
+        IF PN_IW14_PRODUCTCOUNTER = 21 THEN 
+        RESET  PN_Q_005_RobotReadyHOME;     
+        ENDIF
+        
+        
+        IF PN_IW14_PRODUCTCOUNTER < 21 THEN 
+        Set  PN_Q_005_RobotReadyHOME;
+        WaitTime 0.3;
+        ENDIF
+        
+        
+        WaitDI PN_I_013_RobotCanStart,1;
+        RESET  PN_Q_005_RobotReadyHOME;
+        updatecoordinates;
+        picking;
+        Reset PN_Q_005_RobotReadyHOME;
+        Set PN_Q_006_MagnetON;
+        WaitTime 1;
+        WaitDI PN_I_015_RobotHandSensor,1;
+        WaitTime 0.2;
+        MoveL prepick, v50, fine, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v300, z50, magnetictool;
+  
+        IF PN_IW14_PRODUCTCOUNTER = 1 THEN 
+        palletizing1_1;
+        
+        ELSEIF PN_IW14_PRODUCTCOUNTER = 2 THEN 
+        palletizing1_2;
+        
+        ELSEIF PN_IW14_PRODUCTCOUNTER = 3 THEN 
+        palletizing2_1; 
+        
+        ELSEIF PN_IW14_PRODUCTCOUNTER = 4 THEN 
+        palletizing2_2;
+        
+        ELSEIF PN_IW14_PRODUCTCOUNTER = 5 THEN 
+        palletizing3_1;
+        
+        ELSEIF PN_IW14_PRODUCTCOUNTER = 6 THEN 
+        palletizing3_2;
+
+        ELSEIF PN_IW14_PRODUCTCOUNTER = 7 THEN 
+        palletizing4_1;
+
+        ELSEIF PN_IW14_PRODUCTCOUNTER = 8 THEN 
+        palletizing4_2;
+		
+		ELSEIF PN_IW14_PRODUCTCOUNTER = 9 THEN 
+        palletizing5_1;
+		
+		ELSEIF PN_IW14_PRODUCTCOUNTER = 10 THEN 
+        palletizing5_2;
+		
+		ELSEIF PN_IW14_PRODUCTCOUNTER = 11 THEN 
+        palletizing6_1;
+		
+		ELSEIF PN_IW14_PRODUCTCOUNTER = 12 THEN 
+        palletizing6_2;
+		
+		ELSEIF PN_IW14_PRODUCTCOUNTER = 13 THEN 
+        palletizing7_1;
+		
+		ELSEIF PN_IW14_PRODUCTCOUNTER = 14 THEN 
+        palletizing7_2;
+		
+		ELSEIF PN_IW14_PRODUCTCOUNTER = 15 THEN 
+        palletizing8_1;
+		
+		ELSEIF PN_IW14_PRODUCTCOUNTER = 16 THEN 
+        palletizing8_2;
+		
+		ELSEIF PN_IW14_PRODUCTCOUNTER = 17 THEN 
+        palletizing9_1;
+		
+		ELSEIF PN_IW14_PRODUCTCOUNTER = 18 THEN 
+        palletizing9_2;
+		
+		ELSEIF PN_IW14_PRODUCTCOUNTER = 19 THEN 
+        palletizing10_1;
+		
+		ELSEIF PN_IW14_PRODUCTCOUNTER = 20 THEN 
+        palletizing10_2;
+        ENDIF
+
+
+	ENDPROC
+    
+    PROC updatecoordinates()
+        
+        orginal_x := pickreference.trans.x;
+        orginal_y := pickreference.trans.y;
+        
+        orginal_Zangle := EulerZYX(\Z, pickreference.rot);
+        orginal_Yangle := EulerZYX(\Y, pickreference.rot);
+        orginal_Xangle := EulerZYX(\X, pickreference.rot);
+        
+        xval := AInput(PN_IW08_X);
+        yval := AInput(PN_IW10_Y);
+        angleval := AInput(PN_IW12_ANGLE);
+        
+        X_SET := orginal_x - xval;
+        Y_SET := orginal_y + yval;
+        ANGLE_SET := orginal_Zangle + angleval;
+        
+        pick.trans.x := X_SET;
+        pick.trans.y := Y_SET;
+        
+        IF angleval >57 THEN
+        pick.rot := OrientZYX(ANGLE_SET,orginal_Yangle, orginal_Xangle-2);
+        prepick.rot := OrientZYX(ANGLE_SET,orginal_Yangle, orginal_Xangle-2);
+        
+        ELSEIF angleval<=57 THEN
+        pick.rot := OrientZYX(ANGLE_SET,orginal_Yangle, orginal_Xangle);
+        prepick.rot := OrientZYX(ANGLE_SET,orginal_Yangle, orginal_Xangle);    
+        ENDIF
+
+        
+        
+        WaitTime 0.5;
+        
+    ENDPROC
+    
+    
+    
+    PROC picking()
+        ConfL\Off;
+        MoveL prepick, v300, fine, magnetictool;
+        MoveL pick, v100, fine, magnetictool;
+    ENDPROC
+    
+    PROC palletizing1_1()
+        
+        MoveL prereleaseregion1_direction1, v300, z10, magnetictool;
+        MoveL release1_1, v200, fine, magnetictool;
+        Reset PN_Q_006_MagnetON;
+        WaitTime 0.2;
+        MoveL prereleaseregion1_direction1, v200, z10, magnetictool;
+        WaitDI PN_I_015_RobotHandSensor,0;
+        MoveL preprerelease, v200, z10, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v200, z50, magnetictool;
+
+    ENDPROC
+    
+    PROC palletizing1_2()
+        ConfL\Off;
+        MoveL prereleaseregion2_direction1, v200, z10, magnetictool;
+        MoveL release1_2, v200, fine, magnetictool;
+        Reset PN_Q_006_MagnetON;
+        WaitTime 0.2;
+        MoveL prereleaseregion2_direction1, v200, z10, magnetictool;
+        WaitDI PN_I_015_RobotHandSensor,0;
+        MoveL preprerelease, v200, z10, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v200, z50, magnetictool;
+    
+    ENDPROC
+    
+    PROC palletizing2_1()
+        
+        MoveL prereleaseregion1_direction2, v200, z10, magnetictool;
+        MoveL release2_1, v200, fine, magnetictool;
+        Reset PN_Q_006_MagnetON;
+        WaitTime 0.2;
+        MoveL prereleaseregion1_direction2, v200, z10, magnetictool;
+        WaitDI PN_I_015_RobotHandSensor,0;
+        MoveL preprerelease, v200, z10, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v200, z50, magnetictool;
+    
+    ENDPROC
+    
+    PROC palletizing2_2()
+        
+        MoveL prereleaseregion2_direction2, v200, z10, magnetictool;
+        MoveL release2_2, v200, fine, magnetictool;
+        Reset PN_Q_006_MagnetON;
+        WaitTime 0.2;
+        MoveL prereleaseregion2_direction2, v200, z10, magnetictool;
+        WaitDI PN_I_015_RobotHandSensor,0;
+        MoveL preprerelease, v200, z10, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v200, z50, magnetictool;
+    
+    ENDPROC
+    
+    PROC palletizing3_1()
+        
+        MoveL prereleaseregion1_direction1, v200, z10, magnetictool;
+        MoveL release3_1, v200, fine, magnetictool;
+        Reset PN_Q_006_MagnetON;
+        WaitTime 0.2;
+        MoveL prereleaseregion1_direction1, v200, z10, magnetictool;
+        WaitDI PN_I_015_RobotHandSensor,0;
+        MoveL preprerelease, v200, z10, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v200, z50, magnetictool;
+    
+    ENDPROC
+    
+    PROC palletizing3_2()
+        
+        MoveL prereleaseregion2_direction1, v200, z10, magnetictool;
+        MoveL release3_2, v200, fine, magnetictool;
+        Reset PN_Q_006_MagnetON;
+        WaitTime 0.2;
+        MoveL prereleaseregion2_direction1, v200, z10, magnetictool;
+        WaitDI PN_I_015_RobotHandSensor,0;
+        MoveL preprerelease, v200, z10, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v200, z50, magnetictool;
+    
+    ENDPROC
+    
+    PROC palletizing4_1()
+        
+        MoveL prereleaseregion1_direction2, v200, z10, magnetictool;
+        MoveL release4_1, v200, fine, magnetictool;
+        Reset PN_Q_006_MagnetON;
+        WaitTime 0.2;
+        MoveL prereleaseregion1_direction2, v200, z10, magnetictool;
+        WaitDI PN_I_015_RobotHandSensor,0;
+        MoveL preprerelease, v200, z10, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v200, z50, magnetictool;
+    
+    ENDPROC
+    
+    PROC palletizing4_2()
+        
+        MoveL prereleaseregion2_direction2, v200, z10, magnetictool;
+        MoveL release4_2, v200, fine, magnetictool;
+        Reset PN_Q_006_MagnetON;
+        WaitTime 0.2;
+        MoveL prereleaseregion2_direction2, v200, z10, magnetictool;
+        WaitDI PN_I_015_RobotHandSensor,0;
+        MoveL preprerelease, v200, z10, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v200, z50, magnetictool;
+    
+    ENDPROC
+	
+	PROC palletizing5_1()
+        
+        MoveL prereleaseregion1_direction1, v200, z10, magnetictool;
+        MoveL release5_1, v200, fine, magnetictool;
+        Reset PN_Q_006_MagnetON;
+        WaitTime 0.2;
+        MoveL prereleaseregion1_direction1, v200, z10, magnetictool;
+        WaitDI PN_I_015_RobotHandSensor,0;
+        MoveL preprerelease, v200, z10, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v200, z50, magnetictool;
+    
+    ENDPROC
+	
+	PROC palletizing5_2()
+        
+        MoveL prereleaseregion2_direction1, v200, z10, magnetictool;
+        MoveL release5_2, v200, fine, magnetictool;
+        Reset PN_Q_006_MagnetON;
+        WaitTime 0.2;
+        MoveL prereleaseregion2_direction1, v200, z10, magnetictool;
+        WaitDI PN_I_015_RobotHandSensor,0;
+        MoveL preprerelease, v200, z10, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v200, z50, magnetictool;
+    
+    ENDPROC
+	
+	PROC palletizing6_1()
+        
+        MoveL prereleaseregion1_direction2, v200, z10, magnetictool;
+        MoveL release6_1, v200, fine, magnetictool;
+        Reset PN_Q_006_MagnetON;
+        WaitTime 0.2;
+        MoveL prereleaseregion1_direction2, v200, z10, magnetictool;
+        WaitDI PN_I_015_RobotHandSensor,0;
+        MoveL preprerelease, v200, z10, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v200, z50, magnetictool;
+    
+    ENDPROC
+	
+	PROC palletizing6_2()
+        
+        MoveL prereleaseregion2_direction2, v200, z10, magnetictool;
+        MoveL release6_2, v200, fine, magnetictool;
+        Reset PN_Q_006_MagnetON;
+        WaitTime 0.2;
+        MoveL prereleaseregion2_direction2, v200, z10, magnetictool;
+        WaitDI PN_I_015_RobotHandSensor,0;
+        MoveL preprerelease, v200, z10, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v200, z50, magnetictool;
+    
+    ENDPROC
+	
+	PROC palletizing7_1()
+        
+        MoveL prereleaseregion1_direction1, v200, z10, magnetictool;
+        MoveL release7_1, v200, fine, magnetictool;
+        Reset PN_Q_006_MagnetON;
+        WaitTime 0.2;
+        MoveL prereleaseregion1_direction1, v200, z10, magnetictool;
+        WaitDI PN_I_015_RobotHandSensor,0;
+        MoveL preprerelease, v200, z10, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v200, z50, magnetictool;
+    
+    ENDPROC
+	
+	PROC palletizing7_2()
+        
+        MoveL prereleaseregion2_direction1, v200, z10, magnetictool;
+        MoveL release7_2, v200, fine, magnetictool;
+        Reset PN_Q_006_MagnetON;
+        WaitTime 0.2;
+        MoveL prereleaseregion2_direction1, v200, z10, magnetictool;
+        WaitDI PN_I_015_RobotHandSensor,0;
+        MoveL preprerelease, v200, z10, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v200, z50, magnetictool;
+    
+    ENDPROC
+	
+	PROC palletizing8_1()
+        
+        MoveL prereleaseregion1_direction2, v200, z10, magnetictool;
+        MoveL release8_1, v200, fine, magnetictool;
+        Reset PN_Q_006_MagnetON;
+        WaitTime 0.2;
+        MoveL prereleaseregion1_direction2, v200, z10, magnetictool;
+        WaitDI PN_I_015_RobotHandSensor,0;
+        MoveL preprerelease, v200, z10, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v200, z50, magnetictool;
+    
+    ENDPROC
+	
+	PROC palletizing8_2()
+        
+        MoveL prereleaseregion2_direction2, v200, z10, magnetictool;
+        MoveL release8_2, v200, fine, magnetictool;
+        Reset PN_Q_006_MagnetON;
+        WaitTime 0.2;
+        MoveL prereleaseregion2_direction2, v200, z10, magnetictool;
+        WaitDI PN_I_015_RobotHandSensor,0;
+        MoveL preprerelease, v200, z10, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v200, z50, magnetictool;
+    
+    ENDPROC
+	
+	PROC palletizing9_1()
+        
+        MoveL prereleaseregion1_direction1, v200, z10, magnetictool;
+        MoveL release9_1, v200, fine, magnetictool;
+        Reset PN_Q_006_MagnetON;
+        WaitTime 0.2;
+        MoveL prereleaseregion1_direction1, v200, z10, magnetictool;
+        WaitDI PN_I_015_RobotHandSensor,0;
+        MoveL preprerelease, v200, z10, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v200, z50, magnetictool;
+    
+    ENDPROC
+	
+	PROC palletizing9_2()
+        
+        MoveL prereleaseregion2_direction1, v200, z10, magnetictool;
+        MoveL release9_2, v200, fine, magnetictool;
+        Reset PN_Q_006_MagnetON;
+        WaitTime 0.2;
+        MoveL prereleaseregion2_direction1, v200, z10, magnetictool;
+        WaitDI PN_I_015_RobotHandSensor,0;
+        MoveL preprerelease, v200, z10, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v200, z50, magnetictool;
+    
+    ENDPROC
+	
+	PROC palletizing10_1()
+        
+        MoveL prereleaseregion1_direction2, v200, z10, magnetictool;
+        MoveL release10_1, v200, fine, magnetictool;
+        Reset PN_Q_006_MagnetON;
+        WaitTime 0.2;
+        MoveL prereleaseregion1_direction2, v200, z10, magnetictool;
+        WaitDI PN_I_015_RobotHandSensor,0;
+        MoveL preprerelease, v200, z10, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v200, z50, magnetictool;
+    
+    ENDPROC
+	
+	PROC palletizing10_2()
+        
+        MoveL prereleaseregion2_direction2, v200, z10, magnetictool;
+        MoveL release10_2, v200, fine, magnetictool;
+        Reset PN_Q_006_MagnetON;
+        WaitTime 0.2;
+        MoveL prereleaseregion2_direction2, v200, z10, magnetictool;
+        WaitDI PN_I_015_RobotHandSensor,0;
+        MoveL preprerelease, v200, z10, magnetictool;
+        MoveAbsJ jHome\NoEOffs, v200, z50, magnetictool;
+    
+    ENDPROC
+    
+
+    
+    
+    
+ENDMODULE
